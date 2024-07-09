@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat,Mulish } from "next/font/google";
+import { Inter, Montserrat, Mulish } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "./components/effects/SmoothScroll";
 import Sidebar from "./components/common/Sidebar";
+import Header from "./components/common/Header";
+import Footer from "./components/common/Footer";
 
 const inter = Mulish({ subsets: ["latin"], weight: ['400'] });
 
@@ -20,8 +22,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SmoothScroll>
-          <Sidebar/>
+          <Sidebar />
+          <Header />
           {children}
+          <Footer />
         </SmoothScroll>
       </body>
     </html>
