@@ -16,8 +16,8 @@ const Sidebar = () => {
 
     useEffect(() => {
         if (nav) {
-            gsap.to(sidebarRef.current, { width: '21%', duration: 0.3, ease: 'power4.inOut' })
-            gsap.to(navContentRef.current, { display: 'flex', opacity: 1, duration: 0.2, ease: 'power4.inOut', delay: 0.6 })
+            gsap.to(sidebarRef.current, { width: '21%', duration: 0.03, ease: 'power4.inOut' })
+            gsap.to(navContentRef.current, { display: 'flex', opacity: 1, duration: 0.02, ease: 'power4.inOut', delay: 0.6 })
             gsap.to(iconRef.current, { width: '23%', ease: 'power1.inOut', delay: 0.1 })
         } else {
             gsap.to(navContentRef.current, { display: 'none', opacity: 0, duration: 0.2, ease: 'power4.inOut' })
@@ -27,7 +27,7 @@ const Sidebar = () => {
     }, [nav])
 
     return (
-        <aside ref={sidebarRef} className={` overflow-hidden flex h-screen fixed top-0 left-0 rounded-tr-[15px] rounded-br-[15px] ${nav ? 'whiter' : 'blacker'} trans`} style={{ width: '5%' }}>
+        <aside ref={sidebarRef} className={` overflow-hidden flex max-xl:hidden h-screen  fixed top-0 left-0 rounded-tr-[15px] z-[999] rounded-br-[15px] ${nav ? 'whiter' : 'blacker'} trans`} style={{ width: '5%' }}>
             <div ref={iconRef} className={` h-full relative flex-center rounded-tr-[15px] rounded-br-[15px]`}>
                 <div className="containerHam flex-center fixed left-4">
                     <input className="label-check" onClick={smoothSlide} id="label-check" type="checkbox" />
@@ -38,10 +38,13 @@ const Sidebar = () => {
                     </label>
                 </div>
             </div>
-            <div ref={navContentRef} className={`justify-center items-end w-[100%] h-full relative ${nav ? 'flex' : 'hidden'}`} style={{ opacity: 0 }}>
+            <div ref={navContentRef} className={`justify-center items-end flex-col w-[100%] h-full relative ${nav ? 'flex' : 'hidden'}`} style={{ opacity: 0 }}>
+                <div className="  h-[20%] w-[94%] flex-center">
+                    <p className='plfont text-4xl'>Portfolio</p>
+                </div>
                 <div className="absolute left-4 top-12 border h-[90%] border-gray-300"></div>
                 <div className="w-full h-[80%] flex-bet flex-col">
-                    <nav className={`${poppin.className} flex-col flex justify-evenly pl-16 items-start w-full h-[45%] mt-20`}>
+                    <nav className={`${poppin.className} flex-col flex justify-evenly pl-16 items-start w-full h-[45%] `}>
                         <Link className={`${poppin.className}`} href="/">Home</Link>
                         <Link className={`${poppin.className}`} href="/portfolio">Portfolio</Link>
                         <Link className={`${poppin.className}`} href="/about">About me</Link>
@@ -50,6 +53,7 @@ const Sidebar = () => {
                         {/* Additional content */}
                     </div>
                 </div>
+
             </div>
         </aside>
     )
