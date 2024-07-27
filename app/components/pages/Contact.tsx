@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 const Contact = () => {
   const boxRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const r =useRef();
 
   useEffect(() => {
     const box = boxRef.current;
